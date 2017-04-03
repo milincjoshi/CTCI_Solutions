@@ -6,7 +6,7 @@
 	3. both strings are of equal length and there is only 1 character different
 */
 
-public class Edit_One_Zero{
+public class Edit_One_Zero_5{
 	public static boolean is_one_or_zero_edit_away(String str1, String str2){
 		
 		if(Math.abs(str1.length() - str2.length())>2){
