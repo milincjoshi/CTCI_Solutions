@@ -9,7 +9,7 @@
 
 	and above whole process is repeated n-1 times as we need to rotate matrix by 90 degrees
 */
-	
+
 public class Rotate_Matrix_7{
 
 	static int n = 3;
@@ -52,16 +52,7 @@ public class Rotate_Matrix_7{
 	
 	}
 
-	public static void print_matrix(){
-		
-		System.out.println("New Matrix");
-		for(int i=0; i<n;i++){
-			for(int j=0; j<n;j++){
-				System.out.print(matr[i][j]+" ");
-			}
-			System.out.println();
-		}		
-	}	
+	
 	public static void main(String[] args){
 
 		int c = 0;
