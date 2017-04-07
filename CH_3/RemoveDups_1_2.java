@@ -42,10 +42,10 @@ public class RemoveDups_1_2{
 
 		RemoveDups_1_2.LinkedList linkedList = new RemoveDups_1_2.LinkedList();		
 		
-		for(int i=0;i<5;i++){
+		for(int i=0;i<10;i++){
 			linkedList.appendToTail(new Random().nextInt(10)+1);
 		}	
-		
+			
 		return linkedList;
 	}
 
@@ -60,7 +60,7 @@ public class RemoveDups_1_2{
 			node2 = node1;
 			node2_next = node2.next;
 
-			while(node2 != null){
+			while(node2.next != null){
 				if(node2_next.data == node1.data){
 					node2.next = node2_next.next;
 				//	node2_next = node2_next.next; 
@@ -81,14 +81,10 @@ public class RemoveDups_1_2{
 	
 	public static void main(String[] args){
 
-		
 		RemoveDups_1_2.LinkedList linkedList = make_list();
-
 		linkedList.print_list();
-		RemoveDups_1_2.LinkedList linkedList_ = remove_dup(linkedList);
-		linkedList_.print_list();
-
-	
-	
+		linkedList = remove_dup(linkedList);
+		linkedList.print_list();
+			
 	}
 }
