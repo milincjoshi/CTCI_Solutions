@@ -62,7 +62,7 @@ public class Intersection_7{
 	}
 
 	
-	public static boolean intersects(LinkedList.Node head1, LinkedList.Node head2){
+	public static boolean intersects_1(LinkedList.Node head1, LinkedList.Node head2){
 
 		LinkedList.Node node1 = head1;
 		LinkedList.Node node2 = head2;
@@ -81,6 +81,61 @@ public class Intersection_7{
 
 		return false;
 	}
+	public static LinkedList.Node intersects_2(LinkedList.Node head1, LinkedList.Node head2){
+		LinkedList.Node node1 = head1;
+		LinkedList.Node node2 = head2;
+
+		int n1 = 0;
+		int n2 = 0;
+
+		while(node1.next!= null){
+			node1 = node1.next;
+			n1++;
+		}
+		while(node2.next!= null){
+			node2 = node2.next;
+			n2++;
+		}
+		if(node1 == node2){
+
+
+			node1 = head1;
+			node2 = head2;
+
+			if(n1>n2){
+				int n = n1 - n2;
+				System.out.println("n1");
+				for(int i=0;i<n;i++){
+					node1 = node1.next;
+				}
+			}
+			if(n2>n1){
+				System.out.println("n1");
+				int n = n2 - n1;
+				for(int i=0;i<n;i++){
+					node2 = node2.next;
+				}
+			}
+
+			while(node1.next!=null){
+				if(node1 == node2){
+					return node1;
+				}
+				node1 = node1.next;
+				node2 = node2.next;
+			}
+
+		}
+		else{
+			return null;
+		}
+
+		return null;
+		
+	}
+
+	
+
 	public static void main(String[] args){
 		Intersection_7.LinkedList list1 = new LinkedList();
 		Intersection_7.LinkedList list2 = new LinkedList();
@@ -111,10 +166,13 @@ public class Intersection_7{
 		list2.appendToTail_node(node4);
 		list1.appendToTail_node(node5);
 		list2.appendToTail_node(node5);
-		System.out.println(intersects(list1.head, list2.head));
+
+		list1.print_list();
+		list2.print_list();
 		
-		list1 = make_list();
-		list2 = make_list();
-		System.out.println(intersects(list1.head, list2.head));
+		Intersection_7.LinkedList.Node node_intersecting;
+		node_intersecting = intersects_2(list1.head, list2.head);
+			
+		System.out.println(node_intersecting.data);
 	}
 }
