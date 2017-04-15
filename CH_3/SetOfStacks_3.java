@@ -16,7 +16,7 @@ public class SetOfStacks_3{
 		}
 		else{
 			Stack lastStack = setOfStacks.get(setOfStacks.size()-1);
-			if(lastStack.height>=lastStack.height_limit || lastStack == null){
+			if(lastStack.height>=lastStack.height_limit){
 				SetOfStacks_3.Stack newStack = new SetOfStacks_3.Stack();
 				newStack.push(data);
 				setOfStacks.add(newStack);
@@ -34,6 +34,58 @@ public class SetOfStacks_3{
 			lastStack = null;
 		}
 		return i;
+	}	
+
+	public static int pop_at_index(int index){
+		
+		//link all stacks
+
+		Stack.Node start_pointer;
+		for(int i=0;i<setOfStacks.size()-1;i++){
+			
+			Stack current = setOfStacks.get(i);
+			Stack  next = setOfStacks.get(i+1);
+
+			Stack.Node next_node = next.top;
+			
+			while(next_node.next != null){
+				next_node = next_node.next;
+			}
+
+			next_node.next = current.top;
+		}
+
+		start_pointer = setOfStacks.get(setOfStacks.size()-1).top;
+		int total_size = 0;
+		while(start_pointer != null){
+			total_size++;
+			start_pointer = start_pointer.next;
+		}
+
+		start_pointer = setOfStacks.get(setOfStacks.size()-1).top;
+		int counter = 0;
+		while(total_size - index != counter+1){
+			start_pointer = start_pointer.next;
+			counter++;
+		}
+		start_pointer.next = start_pointer.next.next;
+
+		start_pointer = setOfStacks.get(setOfStacks.size()-1).top;
+
+		setOfStacks = new ArrayList<Stack>();
+		make_new_stack(start_pointer);
+		return 0;
+	}	
+
+	public static int make_new_stack(Stack.Node node){
+		if(node.next == null){
+			return node.data;
+		}
+
+		int i = make_new_stack(node.next);
+		push_to_set_of_stacks(i);
+		return node.data;
+
 	}	
 
 	public static class Stack{
@@ -100,10 +152,14 @@ public class SetOfStacks_3{
 		
 		setOfStacks = new ArrayList<Stack>();
 	
-		for(int i=0;i<new Random().nextInt(20)+1;i++){
+		for(int i=0;i<20;i++){
 			int j = new Random().nextInt(10)+1;
-			SetOfStacks_3.push_to_set_of_stacks(j);
+			SetOfStacks_3.push_to_set_of_stacks(i);
 		}
+
+		print_all_data();
+		pop_at_index(10);
+		System.out.println("updated Stack ");
 		print_all_data();
 		
 	}
