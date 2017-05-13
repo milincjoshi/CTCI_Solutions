@@ -52,8 +52,10 @@ public class Check_Subtree_10{
 			iterate_subtrees(node, tree2_root);
 			System.out.println("subtree_are_same "+subtree_are_same);
 		}
-		find_tree2_root(node.left, tree2_root);
-		find_tree2_root(node.right, tree2_root);
+		else{
+			find_tree2_root(node.left, tree2_root);
+			find_tree2_root(node.right, tree2_root);			
+		}
 			
 	}
 
