@@ -19,7 +19,36 @@ public class RobotGrid_2{
 		return false;
 	}
 
+	static HashMap<String, Boolean> hashMap;
+
+	public static boolean findPathOptimizedTime(boolean[][] grid, int row, int column){
+
+		if(row < 0 || column < 0 || !grid[row][column]){
+			return false;
+		}
+
+		if(hashMap.containsKey(row+","+column)){
+			return hashMap.get(row+","+column);
+		}
+
+		boolean a = findPathOptimizedTime(grid, row-1, column);
+		boolean b = findPathOptimizedTime(grid, row, column-1);
+
+		if( (row == 0 && column==0) || a || b ){
+			System.out.println(row+","+column);
+
+			hashMap.put(row+","+column, true);
+
+			return true;
+		}
+
+		return false;
+	}
+
 	public static void main(String[] args){
+
+		hashMap = new HashMap<String, Boolean>();
+
 		boolean[][] grid = new boolean[3][3];
 		int row = 3;
 		int column = 3;
@@ -34,5 +63,7 @@ public class RobotGrid_2{
 
 		findPath(grid, 2,2);
 
+		findPathOptimizedTime(grid, 2,2);
+		
 	}
 }
