@@ -48,8 +48,8 @@ public class ChildSteps_1{
         hashMap = new HashMap<Integer, Integer>();
 
         System.out.println(countSteps(n));
-
         System.out.println(countStepsOptimizedTime(n));
+        
         
     }
 }
