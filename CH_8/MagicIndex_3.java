@@ -18,9 +18,24 @@ public class MagicIndex_3{
 		else{
 			return magicIndex(array, start, mid-1);
 		}
+	}
+
+	public static Integer magicIndexDupValues(int[] array, int start, int end){
+		if(start>end){
+			return null;
+		}
+
+		int mid = (start+end)/2;
 		
+		if(array[mid] == mid){
+			return mid;
+		}
+		int i = magicIndex(array, mid+1, end);
+		int j = magicIndex(array, start, mid-1);
 
-
+		System.out.println(i);
+		System.out.println(j);
+		
 	}
 	public static void main(String[] args){
 		
