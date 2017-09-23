@@ -1,0 +1,14 @@
+public class Trie{
+	
+	class Trie{
+		char root;
+		class Node{
+			char data;
+			
+		}
+	}
+
+	public static void main(String[] args){
+
+	}	
+}
